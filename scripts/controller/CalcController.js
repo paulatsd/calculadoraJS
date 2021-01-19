@@ -10,6 +10,7 @@ class CalcController {
         this._timeEl = document.querySelector("#hora");
         this._currentDate;
         this.initialize(); //inicializa alguns procedimentos na instancia do objetivo
+        this.initButtonsEvents();
     }
 
     //Contém as informação que devem funcionar assim que o objeto desta classe for instanciado
@@ -22,6 +23,20 @@ class CalcController {
         setInterval(() => {
             this.setDisplayDateTime();
         }, 1000);
+    }
+
+    initButtonsEvents(){
+
+        //Pega todos os filhos 'g' de buttons e parts - retorno uma lista de nodes
+        let buttons = document.querySelectorAll("#buttons > g, #parts > g");
+
+        //Para cada botão captura o evento de clique do botão
+        buttons.forEach( (btn, index) => {
+            btn.addEventListener('click', e => {
+                //Pega o nome da classe do botão clicado e remove o nome 'btn-' da frente
+                console.log(btn.className.baseVal.replace("btn-", ""));
+            });
+        });
     }
 
     setDisplayDateTime(){
