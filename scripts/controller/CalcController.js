@@ -25,6 +25,13 @@ class CalcController {
         }, 1000);
     }
 
+    //Aplica diversos eventos em um mesmo elemento
+    addEventListenerAll(element, events, fn){
+        events.split(' ').forEach( event => {
+            element.addEventListener(event, fn, false);
+        }); 
+    }
+
     initButtonsEvents(){
 
         //Pega todos os filhos 'g' de buttons e parts - retorno uma lista de nodes
@@ -32,7 +39,7 @@ class CalcController {
 
         //Para cada botão captura o evento de clique do botão
         buttons.forEach( (btn, index) => {
-            btn.addEventListener('click', e => {
+            this.addEventListenerAll(btn, 'click drag', e => {
                 //Pega o nome da classe do botão clicado e remove o nome 'btn-' da frente
                 console.log(btn.className.baseVal.replace("btn-", ""));
             });
