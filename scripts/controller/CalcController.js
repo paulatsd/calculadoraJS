@@ -43,6 +43,11 @@ class CalcController {
                 //Pega o nome da classe do botão clicado e remove o nome 'btn-' da frente
                 console.log(btn.className.baseVal.replace("btn-", ""));
             });
+
+            //Adiciona evento de estilo ao ponteiro do mouse
+            this.addEventListenerAll(btn, 'mouseover mouseup mousedown', e => {
+                btn.style.cursor = "pointer";
+            });
         });
     }
 
